@@ -8,7 +8,7 @@ function QuestionCard({ question, index, total, selectedAnswer, onSelectAnswer, 
     <div className="glass-panel mx-auto max-w-4xl rounded-[2rem] p-6 sm:p-8">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <p className="text-eyebrow">Question {index + 1}</p>
+          <p className="text-eyebrow">Savol {index + 1}</p>
           <h3 className="text-h2 mt-2 max-w-3xl">{question.question}</h3>
         </div>
         {selectedAnswer ? (
@@ -52,7 +52,7 @@ function QuestionCard({ question, index, total, selectedAnswer, onSelectAnswer, 
           disabled={!canPrev || isSubmitting}
           className="glass-button inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-50"
         >
-          <FiArrowLeft /> Previous
+          <FiArrowLeft /> Oldingi
         </button>
 
         {index + 1 === total ? (
@@ -62,7 +62,7 @@ function QuestionCard({ question, index, total, selectedAnswer, onSelectAnswer, 
             disabled={isSubmitting}
             className="brand-primary inline-flex items-center gap-2 rounded-2xl px-6 py-3 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-70"
           >
-            {isSubmitting ? 'Submitting...' : 'Testni yakunlash'}
+            {isSubmitting ? 'Yuborilmoqda...' : 'Testni yakunlash'}
           </button>
         ) : (
           <button
@@ -71,7 +71,7 @@ function QuestionCard({ question, index, total, selectedAnswer, onSelectAnswer, 
             disabled={!canNext || isSubmitting}
             className="brand-primary inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-70"
           >
-            Next <FiArrowRight />
+            Keyingi <FiArrowRight />
           </button>
         )}
       </div>

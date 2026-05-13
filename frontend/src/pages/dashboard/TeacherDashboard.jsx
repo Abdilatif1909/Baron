@@ -24,32 +24,32 @@ function TeacherDashboard({ tests, results }) {
   return (
     <div className="space-y-6">
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <DashboardCard title="Managed tests" value={tests.length} subtitle="Created by teacher" icon={FiClipboard} />
-        <DashboardCard title="Student results" value={results.length} subtitle="Submitted answers" icon={FiUsers} />
-        <DashboardCard title="Average score" value={averageScore} subtitle="Across all results" icon={FiTrendingUp} />
-        <DashboardCard title="Active students" value={groupedStudents.length} subtitle="Unique participants" icon={FiActivity} />
+        <DashboardCard title="Boshqariladigan testlar" value={tests.length} subtitle="O‘qituvchi yaratgan testlar" icon={FiClipboard} />
+        <DashboardCard title="Talaba natijalari" value={results.length} subtitle="Topshirilgan javoblar" icon={FiUsers} />
+        <DashboardCard title="O‘rtacha ball" value={averageScore} subtitle="Barcha natijalar bo‘yicha" icon={FiTrendingUp} />
+        <DashboardCard title="Faol talabalar" value={groupedStudents.length} subtitle="Noyob ishtirokchilar" icon={FiActivity} />
       </div>
 
       <div className="grid gap-6 xl:grid-cols-2">
         <div className="glass-panel rounded-3xl p-6">
-          <h3 className="text-xl font-semibold text-[#0f172a]">Student scores</h3>
+          <h3 className="text-xl font-semibold text-[#0f172a]">Talabalar ballari</h3>
           <div className="mt-5 space-y-3">
             {groupedStudents.map((student) => (
               <div key={student.student} className="soft-card">
                 <p className="font-medium text-[#0f172a]">{student.student}</p>
-                <p className="mt-1 text-sm text-[#64748b]">Attempts: {student.attempts} • Average score: {student.average}</p>
+                <p className="mt-1 text-sm text-[#64748b]">Urinishlar: {student.attempts} • O‘rtacha ball: {student.average}</p>
               </div>
             ))}
           </div>
         </div>
 
         <div className="glass-panel rounded-3xl p-6">
-          <h3 className="text-xl font-semibold text-[#0f172a]">Recent analytics</h3>
+          <h3 className="text-xl font-semibold text-[#0f172a]">So‘nggi tahlillar</h3>
           <div className="mt-5 space-y-3">
             {results.slice(0, 8).map((item) => (
               <div key={item.id} className="soft-card">
                 <p className="font-medium text-[#0f172a]">{item.student_name}</p>
-                <p className="mt-1 text-sm text-[#64748b]">{item.test_title} • Score: {item.score} • {formatDate(item.created_at)}</p>
+                <p className="mt-1 text-sm text-[#64748b]">{item.test_title} • Ball: {item.score} • {formatDate(item.created_at)}</p>
               </div>
             ))}
           </div>

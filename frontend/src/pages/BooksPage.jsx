@@ -25,7 +25,7 @@ function BooksPage() {
 
   return (
     <section className="container-shell py-10">
-      <SectionHeading eyebrow="Books" title="Kitob PDF kutubxonasi" description="Kitoblar lectures sahifasidagidek preview, ko‘rish va yuklab olish funksiyasi bilan chiqariladi." />
+      <SectionHeading eyebrow="Kitoblar" title="Kitob PDF kutubxonasi" description="Kitoblar ma’ruzalar sahifasidagi kabi ko‘rish va yuklab olish funksiyasi bilan chiqariladi." />
       <div className="mt-8 max-w-xl">
         <SearchBar value={query} onChange={(e) => setQuery(e.target.value)} onSubmit={(e) => e.preventDefault()} placeholder="Kitob qidirish" />
       </div>
@@ -37,7 +37,7 @@ function BooksPage() {
             <PdfCard
               key={item.id}
               item={item}
-              type="Book"
+              type="Kitob"
               onPreview={setActiveItem}
               onDownload={(pdf) => downloadStorage.trackDownload({ ...pdf, type: 'book' })}
             />

@@ -36,9 +36,9 @@ function HomePage() {
 
   const highlights = useMemo(
     () => [
-      'JWT authentication + protected routes',
-      'Responsive education-focused dashboard',
-      'Automatic PDF library integration',
+      'JWT autentifikatsiyasi va himoyalangan yo‘nalishlar',
+      'Ta’limga moslashgan adaptiv boshqaruv paneli',
+      'Avtomatik PDF kutubxona integratsiyasi',
     ],
     []
   );
@@ -54,7 +54,7 @@ function HomePage() {
             <SectionHeading
               eyebrow="Fan imkoniyatlari"
               title="Web dasturlashni bosqichma-bosqich va amaliy ko‘rinishda o‘rganing"
-              description="Platforma nazariya, amaliy topshiriqlar, testlar va role-based analytics orqali o‘quv jarayonini yagona ekotizimga birlashtiradi."
+              description="Platforma nazariya, amaliy topshiriqlar, testlar va rollarga asoslangan tahlil orqali o‘quv jarayonini yagona ekotizimga birlashtiradi."
             />
             <div className="mt-8 grid gap-4">
               {highlights.map((item) => (
@@ -67,22 +67,22 @@ function HomePage() {
           </div>
 
           <div className="brand-dark-panel overflow-hidden rounded-[2rem] p-8 sm:p-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/72">Education platform UI</p>
-            <h3 className="mt-4 text-3xl font-black tracking-tight">Zamonaviy, responsive va animatsiyalangan learning experience</h3>
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/72">Ta’lim platformasi interfeysi</p>
+            <h3 className="mt-4 text-3xl font-black tracking-tight">Zamonaviy, moslashuvchan va animatsiyalangan o‘quv tajribasi</h3>
             <p className="mt-4 text-sm leading-7 text-white/75">
-              Mobile, tablet va desktop uchun optimallashtirilgan interfeys. Glassmorphism, gradientlar va Framer Motion bilan premium ko‘rinish.
+              Mobil, planshet va kompyuter uchun optimallashtirilgan interfeys. Glassmorphism, gradientlar va Framer Motion bilan premium ko‘rinish.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link to="/tests" className="rounded-2xl bg-white px-5 py-3 font-semibold text-[#0f172a]">
                 Testlarni ishlash
               </Link>
               <Link to="/dashboard" className="inline-flex items-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-5 py-3 font-semibold text-white">
-                Dashboard <FiArrowRight />
+                Boshqaruv paneli <FiArrowRight />
               </Link>
             </div>
             <div className="mt-8 rounded-3xl border border-white/10 bg-white/10 p-4 backdrop-blur-md">
               <div className="flex items-center gap-3 text-sm text-white/85">
-                <FiPlayCircle /> Live PDF preview, upload management va analytics tayyor.
+                <FiPlayCircle /> Jonli PDF ko‘rish, yuklash boshqaruvi va tahlil moduli tayyor.
               </div>
             </div>
           </div>
@@ -90,18 +90,18 @@ function HomePage() {
       </section>
 
       <PreviewSection
-        title="Lecture library preview"
-        description="Backend API dan olingan lecture materiallar card ko‘rinishida, preview va download bilan." 
+        title="Ma’ruzalar kutubxonasi ko‘rinishi"
+        description="Backend API dan olingan ma’ruza materiallari karta ko‘rinishida, ko‘rish va yuklab olish bilan." 
         items={lectures}
-        type="Lecture"
+        type="Ma’ruza"
         onTrackDownload={(item) => downloadStorage.trackDownload({ ...item, type: 'lecture' })}
       />
 
       <PreviewSection
-        title="Practical library preview"
-        description="Amaliy mashg‘ulotlar uchun PDF kolleksiya, zamonaviy modal viewer bilan." 
+        title="Amaliyot kutubxonasi ko‘rinishi"
+        description="Amaliy mashg‘ulotlar uchun PDF to‘plami, zamonaviy modal ko‘ruvchi bilan." 
         items={practicals}
-        type="Practical"
+        type="Amaliyot"
         onTrackDownload={(item) => downloadStorage.trackDownload({ ...item, type: 'practical' })}
       />
 
@@ -109,10 +109,10 @@ function HomePage() {
         <div className="brand-dark-panel overflow-hidden rounded-[2rem] p-8 sm:p-10">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/75">CTA</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/75">Chaqiriq</p>
               <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">Web dasturlash fanini bugundan professional tarzda o‘rganishni boshlang.</h2>
               <p className="mt-4 max-w-2xl text-white/80">
-                Student, teacher va admin uchun alohida flow, test results va learning resources bitta joyda.
+                Talaba, o‘qituvchi va administrator uchun alohida oqim, test natijalari va o‘quv resurslari bitta joyda.
               </p>
             </div>
             <Link to="/register" className="rounded-2xl bg-white px-6 py-4 text-center font-semibold text-[#0f172a]">

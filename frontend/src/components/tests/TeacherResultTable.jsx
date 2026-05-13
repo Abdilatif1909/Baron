@@ -7,8 +7,8 @@ function TeacherResultTable({ results }) {
     <div className="glass-panel overflow-hidden rounded-[2rem] p-6 sm:p-8">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <p className="text-eyebrow">Teacher analytics</p>
-          <h2 className="text-h3 mt-2">Student natijalari</h2>
+          <p className="text-eyebrow">O‘qituvchi tahlili</p>
+          <h2 className="text-h3 mt-2">Talabalar natijalari</h2>
         </div>
       </div>
 
@@ -22,12 +22,12 @@ function TeacherResultTable({ results }) {
           <table className="min-w-full text-left">
             <thead>
               <tr className="border-b border-[rgba(219,228,240,0.8)]">
-                <th className="text-table-head pb-4 pr-4">Student</th>
+                <th className="text-table-head pb-4 pr-4">Talaba</th>
                 <th className="text-table-head pb-4 pr-4">Test</th>
-                <th className="text-table-head pb-4 pr-4">Score</th>
-                <th className="text-table-head pb-4 pr-4">Completion</th>
-                <th className="text-table-head pb-4 pr-4">Time</th>
-                <th className="text-table-head pb-4">Date</th>
+                <th className="text-table-head pb-4 pr-4">Ball</th>
+                <th className="text-table-head pb-4 pr-4">Bajarilish</th>
+                <th className="text-table-head pb-4 pr-4">Vaqt</th>
+                <th className="text-table-head pb-4">Sana</th>
               </tr>
             </thead>
             <tbody>

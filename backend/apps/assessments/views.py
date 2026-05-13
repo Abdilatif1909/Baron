@@ -42,7 +42,7 @@ class TestViewSet(viewsets.ModelViewSet):
     def perform_update(self, serializer):
         instance = self.get_object()
         if self.request.user.role == ROLE_TEACHER and instance.created_by != self.request.user:
-            raise PermissionDenied("You can only update your own tests.")
+            raise PermissionDenied("Siz faqat o‘zingiz yaratgan testlarni tahrirlashingiz mumkin.")
         serializer.save()
 
     @decorators.action(detail=True, methods=["get"], permission_classes=[permissions.IsAuthenticated])
@@ -53,7 +53,7 @@ class TestViewSet(viewsets.ModelViewSet):
     @decorators.action(detail=True, methods=["post"], permission_classes=[permissions.IsAuthenticated])
     def submit(self, request, pk=None):
         if request.user.role != ROLE_STUDENT:
-            return response.Response({"detail": "Only students can submit tests."}, status=status.HTTP_403_FORBIDDEN)
+            return response.Response({"detail": "Faqat talabalar test topshirishi mumkin."}, status=status.HTTP_403_FORBIDDEN)
 
         test = self.get_object()
         serializer = TestSubmitSerializer(data=request.data)
@@ -65,7 +65,7 @@ class TestViewSet(viewsets.ModelViewSet):
         invalid_question_ids = [question_id for question_id in answers if question_id not in question_ids]
         if invalid_question_ids:
             return response.Response(
-                {"detail": f"Invalid question ids: {invalid_question_ids}"},
+                {"detail": f"Noto‘g‘ri savol identifikatorlari: {invalid_question_ids}"},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
@@ -81,7 +81,7 @@ class TestViewSet(viewsets.ModelViewSet):
     @decorators.action(detail=False, methods=["get"], permission_classes=[permissions.IsAuthenticated])
     def teacher_results(self, request):
         if request.user.role not in {ROLE_TEACHER, ROLE_ADMIN}:
-            return response.Response({"detail": "Only teachers and admins can view this endpoint."}, status=status.HTTP_403_FORBIDDEN)
+            return response.Response({"detail": "Bu bo‘limni faqat o‘qituvchi va administratorlar ko‘ra oladi."}, status=status.HTTP_403_FORBIDDEN)
 
         results = Result.objects.select_related("student", "test")
         if request.user.role == ROLE_TEACHER:
@@ -110,13 +110,13 @@ class QuestionViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         test = serializer.validated_data["test"]
         if self.request.user.role == ROLE_TEACHER and test.created_by != self.request.user:
-            raise PermissionDenied("You can only add questions to your own tests.")
+            raise PermissionDenied("Siz faqat o‘zingiz yaratgan testlarga savol qo‘sha olasiz.")
         serializer.save()
 
     def perform_update(self, serializer):
         test = serializer.validated_data.get("test", serializer.instance.test)
         if self.request.user.role == ROLE_TEACHER and test.created_by != self.request.user:
-            raise PermissionDenied("You can only edit questions from your own tests.")
+            raise PermissionDenied("Siz faqat o‘zingiz yaratgan testlarning savollarini tahrirlashingiz mumkin.")
         serializer.save()
 
 

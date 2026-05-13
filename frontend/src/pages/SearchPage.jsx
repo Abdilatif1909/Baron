@@ -35,9 +35,9 @@ function SearchPage() {
   return (
     <section className="container-shell py-10">
       <SectionHeading
-        eyebrow="Realtime search"
-        title="Lecture, practical va books bo‘ylab qidiring"
-        description="Debounced va real-time qidiruv service layer orqali ishlaydi."
+        eyebrow="Tezkor qidiruv"
+        title="Ma’ruza, amaliyot va kitoblar bo‘ylab qidiring"
+        description="Kechiktirib ishlovchi va real vaqt qidiruv servis qatlami orqali ishlaydi."
       />
 
       <div className="mt-8 max-w-2xl">
@@ -78,7 +78,7 @@ function SearchPage() {
               {(groups[key] || []).length === 0 ? (
                 <div className="soft-card-subtle">
                   <p className="text-muted text-sm">
-                    No results found
+                    Natija topilmadi
                   </p>
                 </div>
               ) : (

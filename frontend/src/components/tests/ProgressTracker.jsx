@@ -9,16 +9,16 @@ function ProgressTracker({ currentStep, totalSteps, answeredCount, elapsedSecond
     <div className="glass-panel rounded-[2rem] p-5 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <p className="text-eyebrow">Test progress</p>
+          <p className="text-eyebrow">Test jarayoni</p>
           <h2 className="text-h3 mt-2">{currentStep} / {totalSteps} bosqich</h2>
         </div>
         <div className="flex flex-wrap items-center gap-3">
           <div className="soft-card rounded-2xl px-4 py-3">
-            <p className="text-muted">Answered</p>
+            <p className="text-muted">Javob berilgan</p>
             <p className="mt-1 text-lg font-semibold text-[var(--color-heading)]">{answeredCount}/{totalSteps}</p>
           </div>
           <div className="soft-card rounded-2xl px-4 py-3">
-            <p className="text-muted inline-flex items-center gap-2"><FiClock /> Timer</p>
+            <p className="text-muted inline-flex items-center gap-2"><FiClock /> Taymer</p>
             <p className="mt-1 text-lg font-semibold text-[var(--color-heading)]">{formatDuration(elapsedSeconds)}</p>
           </div>
         </div>
@@ -32,9 +32,9 @@ function ProgressTracker({ currentStep, totalSteps, answeredCount, elapsedSecond
           />
         </div>
         <div className="mt-3 flex items-center justify-between text-muted">
-          <span>Start</span>
-          <span>{progressPercent}% completed</span>
-          <span>Finish</span>
+          <span>Boshlandi</span>
+          <span>{progressPercent}% bajarildi</span>
+          <span>Yakun</span>
         </div>
       </div>
     </div>

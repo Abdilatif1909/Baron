@@ -10,24 +10,24 @@ function Footer() {
             <div className="icon-chip text-lg"><FiBookOpen /></div>
             <div>
               <h3 className="text-card-title text-[var(--color-heading-2)]">WebDasturlashEdu</h3>
-              <p className="text-muted">Modern education platform</p>
+              <p className="text-muted">Zamonaviy ta’lim platformasi</p>
             </div>
           </div>
           <p className="text-muted mt-4 max-w-md">
-            Web dasturlash fanini zamonaviy UI, PDF kutubxona, online testlar va role-based dashboard orqali o‘rganing.
+            Web dasturlash fanini zamonaviy UI, PDF kutubxona, onlayn testlar va rollarga asoslangan boshqaruv paneli orqali o‘rganing.
           </p>
         </div>
         <div>
-          <p className="text-eyebrow">Quick links</p>
+          <p className="text-eyebrow">Tezkor havolalar</p>
           <div className="mt-4 space-y-3">
-            <Link to="/lectures" className="text-link text-sm">Lectures</Link>
-            <Link to="/practicals" className="text-link text-sm">Practicals</Link>
-            <Link to="/tests" className="text-link text-sm">Tests</Link>
-            <Link to="/dashboard" className="text-link text-sm">Dashboard</Link>
+            <Link to="/lectures" className="text-link text-sm">Ma’ruzalar</Link>
+            <Link to="/practicals" className="text-link text-sm">Amaliyotlar</Link>
+            <Link to="/tests" className="text-link text-sm">Testlar</Link>
+            <Link to="/dashboard" className="text-link text-sm">Boshqaruv paneli</Link>
           </div>
         </div>
         <div>
-          <p className="text-eyebrow">Connect</p>
+          <p className="text-eyebrow">Bog‘lanish</p>
           <div className="mt-4 flex items-center gap-3 text-lg text-[var(--color-body)]">
             <FiMail />
             <FiGithub />

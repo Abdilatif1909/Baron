@@ -19,7 +19,7 @@ function PdfViewerModal({ item, open, onClose, onDownload }) {
           >
             <div className="flex items-center justify-between gap-4 border-b border-white/10 px-5 py-4">
               <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-[#9ec0ff]">PDF Viewer</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-[#9ec0ff]">PDF ko‘ruvchi</p>
                 <h3 className="mt-2 text-lg font-semibold">{item.title}</h3>
               </div>
               <div className="flex items-center gap-2">
@@ -30,7 +30,7 @@ function PdfViewerModal({ item, open, onClose, onDownload }) {
                   onClick={() => onDownload?.(item)}
                   className="glass-button rounded-2xl px-4 py-2 text-sm font-semibold"
                 >
-                  <span className="inline-flex items-center gap-2"><FiDownload /> Download</span>
+                  <span className="inline-flex items-center gap-2"><FiDownload /> Yuklab olish</span>
                 </a>
                 <button type="button" onClick={onClose} className="glass-button rounded-2xl p-3">
                   <FiX />

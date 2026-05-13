@@ -106,10 +106,10 @@ function TeacherTestsPage() {
     const activeStudents = new Set(results.map((item) => item.student_name)).size;
 
     return [
-      { title: 'Managed tests', value: tests.length, subtitle: 'Teacher-owned assessments' },
-      { title: 'Student attempts', value: results.length, subtitle: 'Submitted test sessions' },
-      { title: 'Average score', value: averageScore, subtitle: 'Across all attempts' },
-      { title: 'Avg completion', value: `${averageCompletion}%`, subtitle: `${activeStudents} active students` },
+      { title: 'Boshqariladigan testlar', value: tests.length, subtitle: 'O‘qituvchiga tegishli baholashlar' },
+      { title: 'Talaba urinishlari', value: results.length, subtitle: 'Topshirilgan test sessiyalari' },
+      { title: 'O‘rtacha ball', value: averageScore, subtitle: 'Barcha urinishlar bo‘yicha' },
+      { title: 'O‘rtacha bajarilish', value: `${averageCompletion}%`, subtitle: `${activeStudents} faol talabalar` },
     ];
   }, [results, tests.length]);
 
@@ -132,14 +132,14 @@ function TeacherTestsPage() {
         <div className="brand-dark-panel rounded-[2rem] p-8 sm:p-10">
           <div className="flex flex-wrap items-start justify-between gap-6">
             <div className="max-w-3xl">
-              <p className="text-eyebrow !text-white/75">Teacher control center</p>
-              <h1 className="mt-4 text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">Test analytics, student attempts va performance overview.</h1>
+              <p className="text-eyebrow !text-white/75">O‘qituvchi boshqaruv markazi</p>
+              <h1 className="mt-4 text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">Test tahlili, talaba urinishlari va umumiy natijalar.</h1>
               <p className="mt-4 text-base leading-8 text-white/80 sm:text-lg">
-                Bu sahifa teacher va admin uchun test moduli bo‘yicha yakuniy analytics paneli hisoblanadi.
+                Bu sahifa o‘qituvchi va administrator uchun test moduli bo‘yicha yakuniy tahlil paneli hisoblanadi.
               </p>
             </div>
             <Link to="/tests" className="rounded-2xl bg-white px-6 py-4 font-semibold text-[#0f172a] shadow-lg">
-              Student view <FiArrowRight className="ml-2 inline-flex" />
+              Talaba ko‘rinishi <FiArrowRight className="ml-2 inline-flex" />
             </Link>
           </div>
         </div>
@@ -160,17 +160,17 @@ function TeacherTestsPage() {
               <div className="flex items-center gap-3">
                 <div className="icon-chip"><FiBarChart2 /></div>
                 <div>
-                  <h2 className="text-h3">Insights</h2>
-                  <p className="text-muted mt-1">Qisqa executive summary.</p>
+                  <h2 className="text-h3">Asosiy ko‘rsatkichlar</h2>
+                  <p className="text-muted mt-1">Qisqa umumiy xulosa.</p>
                 </div>
               </div>
               <div className="mt-5 space-y-4">
                 <div className="soft-card rounded-3xl">
-                  <p className="text-muted inline-flex items-center gap-2"><FiUsers /> Active learners</p>
+                  <p className="text-muted inline-flex items-center gap-2"><FiUsers /> Faol o‘quvchilar</p>
                   <p className="mt-2 text-2xl font-bold text-[var(--color-heading)]">{new Set(results.map((item) => item.student_name)).size}</p>
                 </div>
                 <div className="soft-card rounded-3xl">
-                  <p className="text-muted">Total submitted sessions</p>
+                  <p className="text-muted">Jami topshirilgan sessiyalar</p>
                   <p className="mt-2 text-2xl font-bold text-[var(--color-heading)]">{results.length}</p>
                 </div>
               </div>
@@ -180,12 +180,12 @@ function TeacherTestsPage() {
           <div className="space-y-6">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <SectionHeading
-                eyebrow="Editor workspace"
-                title="Create / edit test UI"
-                description="Test metadata, difficulty, duration va question bank bitta professional workspace ichida boshqariladi."
+                eyebrow="Tahrirlash muhiti"
+                title="Test yaratish va tahrirlash oynasi"
+                description="Test ma’lumotlari, daraja, davomiylik va savollar bazasi bitta professional ish maydonida boshqariladi."
               />
               <div className="w-full max-w-xl">
-                <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} onSubmit={(e) => e.preventDefault()} placeholder="Test, description yoki natija bo‘yicha qidiring" />
+                <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} onSubmit={(e) => e.preventDefault()} placeholder="Test, tavsif yoki natija bo‘yicha qidiring" />
               </div>
             </div>
 
@@ -198,9 +198,9 @@ function TeacherTestsPage() {
 
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <SectionHeading
-                eyebrow="Results database"
+                eyebrow="Natijalar bazasi"
                 title="Talabalar natijalari"
-                description="Student yoki test nomi bo‘yicha qidirib, natijalarni tez tahlil qiling."
+                description="Talaba yoki test nomi bo‘yicha qidirib, natijalarni tez tahlil qiling."
               />
             </div>
 

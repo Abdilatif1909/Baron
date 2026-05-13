@@ -5,9 +5,9 @@ from utils.constants import ANSWER_CHOICES
 
 
 TEST_DIFFICULTY_CHOICES = [
-    ("beginner", "Beginner"),
-    ("intermediate", "Intermediate"),
-    ("advanced", "Advanced"),
+    ("beginner", "Boshlang‘ich"),
+    ("intermediate", "O‘rta"),
+    ("advanced", "Yuqori"),
 ]
 
 

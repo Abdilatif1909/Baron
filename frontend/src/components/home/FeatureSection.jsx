@@ -6,23 +6,23 @@ import SectionHeading from '../shared/SectionHeading';
 const features = [
   {
     icon: FiLayers,
-    title: 'Structured learning flow',
-    description: 'Lecture, practical, test va books bitta integratsiyalashgan learning journey ichida.',
+    title: 'Tartibli o‘quv oqimi',
+    description: 'Ma’ruza, amaliyot, test va kitoblar yagona integratsiyalashgan o‘quv jarayonida jamlangan.',
   },
   {
     icon: FiZap,
-    title: 'Fast modern UX',
-    description: 'Glassmorphism, gradient, responsive layout va Framer Motion animatsiyalar bilan premium interfeys.',
+    title: 'Tezkor zamonaviy interfeys',
+    description: 'Glassmorphism, gradient, moslashuvchan tartib va Framer Motion animatsiyalari bilan premium interfeys.',
   },
   {
     icon: FiActivity,
-    title: 'Teacher analytics',
-    description: 'Teacher o‘z testlari bo‘yicha student natijalari va umumiy analitikani kuzatadi.',
+    title: 'O‘qituvchi tahlili',
+    description: 'O‘qituvchi o‘z testlari bo‘yicha talaba natijalari va umumiy tahlilni kuzatadi.',
   },
   {
     icon: FiGlobe,
-    title: 'Search everywhere',
-    description: 'Lecture, practical va books bo‘yicha real-time qidiruv imkoniyati.',
+    title: 'Hammasi bo‘yicha qidiruv',
+    description: 'Ma’ruza, amaliyot va kitoblar bo‘yicha real vaqt qidiruv imkoniyati.',
   },
 ];
 
@@ -30,9 +30,9 @@ function FeatureSection() {
   return (
     <section className="container-shell py-20">
       <SectionHeading
-        eyebrow="Features"
-        title="Modern education platform uchun barcha kerakli modullar"
-        description="Frontend architecture reusable components va scalable service layer asosida qurilgan."
+        eyebrow="Imkoniyatlar"
+        title="Zamonaviy ta’lim platformasi uchun barcha kerakli modullar"
+        description="Frontend arxitekturasi qayta ishlatiladigan komponentlar va kengayuvchan servis qatlami asosida qurilgan."
         align="center"
       />
       <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">

@@ -50,10 +50,10 @@ function TestsPage() {
       : '0.0';
 
     return [
-      { title: 'Available tests', value: countPaginated(tests), subtitle: 'Professional assessment modules' },
-      { title: 'Question bank', value: totalQuestionCount, subtitle: 'Step-by-step learning checkpoints' },
-      { title: 'My attempts', value: results.length, subtitle: 'Saved student submissions' },
-      { title: 'Average score', value: averageScore, subtitle: 'Across completed tests' },
+      { title: 'Mavjud testlar', value: countPaginated(tests), subtitle: 'Professional baholash modullari' },
+      { title: 'Savollar bazasi', value: totalQuestionCount, subtitle: 'Bosqichma-bosqich o‘quv nazorati' },
+      { title: 'Urinishlarim', value: results.length, subtitle: 'Saqlangan talaba topshiriqlari' },
+      { title: 'O‘rtacha ball', value: averageScore, subtitle: 'Yakunlangan testlar bo‘yicha' },
     ];
   }, [results, tests]);
 
@@ -66,7 +66,7 @@ function TestsPage() {
     if (completed) {
       return `${completed.score}/${completed.total_questions} yakunlangan`;
     }
-    return 'Ready to start';
+    return 'Boshlashga tayyor';
   };
 
   const handlePrimaryAction = (testId) => {
@@ -83,19 +83,19 @@ function TestsPage() {
       <div className="brand-dark-panel overflow-hidden rounded-[2rem] p-8 sm:p-10">
         <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <p className="text-eyebrow !text-white/75">Professional test module</p>
-            <h1 className="mt-4 text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">Talabalar uchun interaktiv test sessiyalari, teacher uchun analytics.</h1>
+            <p className="text-eyebrow !text-white/75">Professional test moduli</p>
+            <h1 className="mt-4 text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">Talabalar uchun interaktiv test sessiyalari, o‘qituvchi uchun tahlil.</h1>
             <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
-              Bosqichma-bosqich test flow, autosave, timer, elegant cards va completion analytics bilan zamonaviy education SaaS tajribasi.
+              Bosqichma-bosqich test oqimi, avtomatik saqlash, taymer, nafis kartalar va yakuniy tahlil bilan zamonaviy ta’lim SaaS tajribasi.
             </p>
             <div className="mt-6 flex flex-wrap gap-3 text-sm text-white/80">
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2"><FiShield /> JWT protected</span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2"><FiShield /> JWT himoyasi</span>
               <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2"><FiZap /> Glassmorphism UX</span>
             </div>
           </div>
           {(user?.role === 'teacher' || user?.role === 'admin') ? (
             <Link to="/teacher/tests" className="rounded-2xl bg-white px-6 py-4 font-semibold text-[#0f172a] shadow-lg">
-              Teacher analytics <FiArrowRight className="ml-2 inline-flex" />
+              O‘qituvchi tahlili <FiArrowRight className="ml-2 inline-flex" />
             </Link>
           ) : null}
         </div>
@@ -107,7 +107,7 @@ function TestsPage() {
 
       <div className="mt-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <SectionHeading
-          eyebrow="Available tests"
+          eyebrow="Mavjud testlar"
           title="Mavjud testlar"
           description="Har bir test 15 bosqichlik card-based session, progress tracker va natija tahlili bilan ishlaydi."
         />
@@ -133,7 +133,7 @@ function TestsPage() {
         </div>
       ) : filteredTests.length === 0 ? (
         <div className="mt-8">
-          <EmptyState title="Test topilmadi" description="Qidiruvni o‘zgartirib qayta urinib ko‘ring yoki teacher tomonidan yangi test yaratilishini kuting." />
+          <EmptyState title="Test topilmadi" description="Qidiruvni o‘zgartirib qayta urinib ko‘ring yoki o‘qituvchi tomonidan yangi test yaratilishini kuting." />
         </div>
       ) : (
         <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -142,7 +142,7 @@ function TestsPage() {
               key={test.id}
               test={test}
               progressLabel={getProgressLabel(test.id)}
-              actionLabel={user?.role === 'teacher' || user?.role === 'admin' ? 'Teacher panel' : 'Testni boshlash'}
+              actionLabel={user?.role === 'teacher' || user?.role === 'admin' ? 'O‘qituvchi paneli' : 'Testni boshlash'}
               onStart={() => handlePrimaryAction(test.id)}
             />
           ))}

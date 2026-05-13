@@ -73,13 +73,13 @@ function DashboardPage() {
   return (
     <section className="container-shell py-10">
       <SectionHeading
-        eyebrow="Dashboard"
+        eyebrow="Boshqaruv paneli"
         title={`${user?.full_name || user?.username || 'User'} uchun shaxsiy kabinet`}
-        description="Student, teacher va admin uchun alohida boshqaruv tajribasi, analytics va management interfeysi."
+        description="Talaba, o‘qituvchi va administrator uchun alohida boshqaruv tajribasi, tahlil va boshqaruv interfeysi."
       />
       <div className="mt-8 grid gap-8 xl:grid-cols-[280px_1fr]">
         <Sidebar role={user?.role || 'student'} />
-        <div>{loading ? <div className="glass-panel rounded-3xl p-8">Dashboard yuklanmoqda...</div> : renderDashboard()}</div>
+        <div>{loading ? <div className="glass-panel rounded-3xl p-8">Boshqaruv paneli yuklanmoqda...</div> : renderDashboard()}</div>
       </div>
     </section>
   );

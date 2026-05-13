@@ -5,9 +5,9 @@ function TeacherTestLibrary({ tests, selectedTestId, loading, onSelect, onCreate
     <div className="glass-panel rounded-[2rem] p-6 sm:p-7">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p className="text-eyebrow">Assessment library</p>
-          <h2 className="text-h3 mt-2">Teacher test manager</h2>
-          <p className="text-muted mt-2">Yangi test yarating yoki mavjud assessmentni tahrir qiling.</p>
+          <p className="text-eyebrow">Baholash kutubxonasi</p>
+          <h2 className="text-h3 mt-2">O‘qituvchi test menejeri</h2>
+          <p className="text-muted mt-2">Yangi test yarating yoki mavjud baholashni tahrir qiling.</p>
         </div>
         <button
           type="button"
@@ -33,7 +33,7 @@ function TeacherTestLibrary({ tests, selectedTestId, loading, onSelect, onCreate
         ) : tests.length === 0 ? (
           <div className="rounded-3xl border border-dashed border-[rgba(219,228,240,0.8)] bg-white/70 px-5 py-8 text-center">
             <p className="text-card-title">Hozircha testlar yo‘q</p>
-            <p className="text-muted mt-2">Birinchi assessmentni yaratish uchun yuqoridagi tugmadan foydalaning.</p>
+            <p className="text-muted mt-2">Birinchi baholashni yaratish uchun yuqoridagi tugmadan foydalaning.</p>
           </div>
         ) : (
           tests.map((item) => {
@@ -50,16 +50,16 @@ function TeacherTestLibrary({ tests, selectedTestId, loading, onSelect, onCreate
                     <div className="flex flex-wrap items-center gap-2">
                       <h3 className="text-card-title truncate">{item.title}</h3>
                       <span className="rounded-full bg-[#f8fafc] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-link)]">
-                        {item.difficulty}
+                        {item.difficulty === 'beginner' ? 'boshlang‘ich' : item.difficulty === 'intermediate' ? 'o‘rta' : item.difficulty === 'advanced' ? 'yuqori' : item.difficulty}
                       </span>
                     </div>
-                    <p className="text-body mt-2 line-clamp-2">{item.description || 'Professional test session with editable question bank.'}</p>
+                    <p className="text-body mt-2 line-clamp-2">{item.description || 'Tahrirlanadigan savollar bazasiga ega professional test sessiyasi.'}</p>
                   </div>
                   <div className="icon-chip h-11 w-11 shrink-0"><FiEdit3 /></div>
                 </div>
 
                 <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-link)]">
-                  <span className="rounded-full bg-[#eff6ff] px-3 py-1 inline-flex items-center gap-2"><FiLayers /> {item.question_count || 0} questions</span>
+                  <span className="rounded-full bg-[#eff6ff] px-3 py-1 inline-flex items-center gap-2"><FiLayers /> {item.question_count || 0} savol</span>
                   <span className="rounded-full bg-[#ecfeff] px-3 py-1 inline-flex items-center gap-2"><FiClock /> {item.estimated_time || 0} min</span>
                 </div>
               </button>

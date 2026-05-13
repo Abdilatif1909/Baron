@@ -118,7 +118,7 @@ function TestSessionPage() {
   if (!session || !currentQuestion) {
     return (
       <section className="container-shell py-10">
-        <EmptyState title="Savollar topilmadi" description="Teacher tomonidan savollar qo‘shilgandan keyin yana urinib ko‘ring." />
+        <EmptyState title="Savollar topilmadi" description="O‘qituvchi tomonidan savollar qo‘shilgandan keyin yana urinib ko‘ring." />
       </section>
     );
   }
@@ -129,12 +129,12 @@ function TestSessionPage() {
         <div className="glass-panel rounded-[2rem] p-6 sm:p-8">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <p className="text-eyebrow">Student test session</p>
+              <p className="text-eyebrow">Talaba test sessiyasi</p>
               <h1 className="text-h2 mt-3">{session.title}</h1>
               <p className="text-body mt-3 max-w-3xl">{session.description || 'Har bir savol alohida bosqichda chiqadi. Autosave, timer va progress bar orqali testni qulay tarzda yakunlang.'}</p>
             </div>
             <div className="soft-card rounded-2xl px-4 py-3">
-              <p className="text-muted">Difficulty</p>
+              <p className="text-muted">Daraja</p>
               <p className="mt-1 text-base font-semibold capitalize text-[var(--color-heading-3)]">{session.difficulty}</p>
             </div>
           </div>
@@ -150,7 +150,7 @@ function TestSessionPage() {
         {answeredCount > 0 ? (
           <div className="glass-panel flex flex-wrap items-center justify-between gap-3 rounded-3xl px-5 py-4">
             <p className="text-muted inline-flex items-center gap-2"><FiCheckCircle className="text-[#15803d]" /> Autosave faol. Javoblaringiz lokal saqlanmoqda.</p>
-            <p className="text-muted">{answeredCount}/{questions.length} answered</p>
+            <p className="text-muted">{answeredCount}/{questions.length} javob berilgan</p>
           </div>
         ) : (
           <div className="glass-panel rounded-3xl px-5 py-4">

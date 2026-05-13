@@ -123,6 +123,6 @@ SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
-ADMIN_SITE_HEADER = "WebDasturlashEdu Administration"
-ADMIN_SITE_TITLE = "WebDasturlashEdu Admin"
-ADMIN_INDEX_TITLE = "Platform management"
+ADMIN_SITE_HEADER = "WebDasturlashEdu boshqaruvi"
+ADMIN_SITE_TITLE = "WebDasturlashEdu admin paneli"
+ADMIN_INDEX_TITLE = "Platforma boshqaruvi"

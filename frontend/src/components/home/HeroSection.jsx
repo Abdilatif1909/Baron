@@ -6,10 +6,10 @@ import StatsCard from '../StatsCard';
 
 function HeroSection({ stats }) {
   const items = [
-    { label: 'Lectures', value: stats.lectures, description: 'Auto imported PDF materials', icon: FiFileText },
-    { label: 'Practicals', value: stats.practicals, description: 'Hands-on laboratory resources', icon: FiBookOpen },
-    { label: 'Tests', value: stats.tests, description: 'Interactive assessment modules', icon: FiBarChart2 },
-    { label: 'Books', value: stats.books, description: 'Recommended reading collection', icon: FiShield },
+    { label: 'Ma’ruzalar', value: stats.lectures, description: 'Avtomatik import qilingan PDF materiallar', icon: FiFileText },
+    { label: 'Amaliyotlar', value: stats.practicals, description: 'Amaliy laboratoriya resurslari', icon: FiBookOpen },
+    { label: 'Testlar', value: stats.tests, description: 'Interaktiv baholash modullari', icon: FiBarChart2 },
+    { label: 'Kitoblar', value: stats.books, description: 'Tavsiya etilgan o‘quv to‘plami', icon: FiShield },
   ];
 
   return (
@@ -17,7 +17,7 @@ function HeroSection({ stats }) {
       <div>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
           <span className="brand-secondary inline-flex rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em]">
-            React + Vite Education Platform
+            React + Vite ta’lim platformasi
           </span>
           <h1 className="text-hero mt-6">
             Web dasturlash fanini <span className="gradient-text">zamonaviy</span> platformada o‘rganing.
@@ -30,7 +30,7 @@ function HeroSection({ stats }) {
               Boshlash <FiArrowRight />
             </Link>
             <Link to="/lectures" className="glass-button rounded-2xl px-6 py-4 font-semibold">
-              Lecture kutubxonasini ochish
+              Ma’ruzalar kutubxonasini ochish
             </Link>
           </div>
         </motion.div>

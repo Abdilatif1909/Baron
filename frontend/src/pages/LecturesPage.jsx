@@ -25,19 +25,19 @@ function LecturesPage() {
 
   return (
     <section className="container-shell py-10">
-      <SectionHeading eyebrow="Lectures" title="Lecture PDF kutubxonasi" description="Har bir lecture card, preview, ko‘rish va yuklab olish funksiyasi bilan taqdim etiladi." />
+      <SectionHeading eyebrow="Ma’ruzalar" title="Ma’ruza PDF kutubxonasi" description="Har bir ma’ruza kartasi ko‘rish va yuklab olish funksiyasi bilan taqdim etiladi." />
       <div className="mt-8 max-w-xl">
-        <SearchBar value={query} onChange={(e) => setQuery(e.target.value)} onSubmit={(e) => e.preventDefault()} placeholder="Lecture qidirish" />
+        <SearchBar value={query} onChange={(e) => setQuery(e.target.value)} onSubmit={(e) => e.preventDefault()} placeholder="Ma’ruza qidirish" />
       </div>
       {filteredLectures.length === 0 ? (
-        <div className="mt-8"><EmptyState title="Lecture topilmadi" description="Qidiruvni o‘zgartirib qayta urinib ko‘ring." /></div>
+        <div className="mt-8"><EmptyState title="Ma’ruza topilmadi" description="Qidiruvni o‘zgartirib qayta urinib ko‘ring." /></div>
       ) : (
         <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {filteredLectures.map((item) => (
             <PdfCard
               key={item.id}
               item={item}
-              type="Lecture"
+              type="Ma’ruza"
               onPreview={setActiveItem}
               onDownload={(pdf) => downloadStorage.trackDownload({ ...pdf, type: 'lecture' })}
             />

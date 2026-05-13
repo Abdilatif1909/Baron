@@ -60,16 +60,16 @@ function Navbar() {
             {isAuthenticated ? (
               <div className="flex items-center gap-2">
                 <Link to="/dashboard" className="glass-button rounded-2xl px-4 py-3 text-sm font-semibold">
-                  <span className="inline-flex items-center gap-2"><FiGrid /> Dashboard</span>
+                  <span className="inline-flex items-center gap-2"><FiGrid /> Boshqaruv paneli</span>
                 </Link>
-                <button type="button" onClick={logout} className="glass-button rounded-2xl p-3" title="Logout">
+                <button type="button" onClick={logout} className="glass-button rounded-2xl p-3" title="Chiqish">
                   <FiLogOut />
                 </button>
               </div>
             ) : (
               <div className="flex items-center gap-2">
-                <Link to="/login" className="glass-button rounded-2xl px-4 py-3 text-sm font-semibold">Login</Link>
-                <Link to="/register" className="brand-primary rounded-2xl px-4 py-3 text-sm font-semibold">Register</Link>
+                <Link to="/login" className="glass-button rounded-2xl px-4 py-3 text-sm font-semibold">Kirish</Link>
+                <Link to="/register" className="brand-primary rounded-2xl px-4 py-3 text-sm font-semibold">Ro‘yxatdan o‘tish</Link>
               </div>
             )}
           </div>
@@ -92,7 +92,7 @@ function Navbar() {
             className="container-shell mt-3 xl:hidden"
           >
             <div className="glass-panel rounded-[2rem] p-4">
-              <SearchBar value={searchText} onChange={(e) => setSearchText(e.target.value)} onSubmit={handleSearch} placeholder="Search content" />
+              <SearchBar value={searchText} onChange={(e) => setSearchText(e.target.value)} onSubmit={handleSearch} placeholder="Kontent bo‘yicha qidirish" />
               <div className="mt-4 grid gap-2">
                 {NAV_LINKS.map((item) => (
                   <NavLink key={item.to} to={item.to} onClick={() => setMobileOpen(false)} className="text-navbar rounded-2xl px-4 py-3 hover:bg-[#eef6ff] hover:text-[var(--color-link-hover)]">
@@ -106,12 +106,12 @@ function Navbar() {
                     <Link to="/dashboard" onClick={() => setMobileOpen(false)} className="glass-button rounded-2xl px-4 py-3 text-center text-sm font-semibold">
                       <span className="inline-flex items-center gap-2"><FiUser /> {user?.full_name || user?.username}</span>
                     </Link>
-                    <button type="button" onClick={logout} className="brand-primary rounded-2xl px-4 py-3 text-sm font-semibold">Logout</button>
+                    <button type="button" onClick={logout} className="brand-primary rounded-2xl px-4 py-3 text-sm font-semibold">Chiqish</button>
                   </>
                 ) : (
                   <>
-                    <Link to="/login" onClick={() => setMobileOpen(false)} className="glass-button rounded-2xl px-4 py-3 text-center text-sm font-semibold">Login</Link>
-                    <Link to="/register" onClick={() => setMobileOpen(false)} className="brand-primary rounded-2xl px-4 py-3 text-center text-sm font-semibold">Register</Link>
+                    <Link to="/login" onClick={() => setMobileOpen(false)} className="glass-button rounded-2xl px-4 py-3 text-center text-sm font-semibold">Kirish</Link>
+                    <Link to="/register" onClick={() => setMobileOpen(false)} className="brand-primary rounded-2xl px-4 py-3 text-center text-sm font-semibold">Ro‘yxatdan o‘tish</Link>
                   </>
                 )}
               </div>
