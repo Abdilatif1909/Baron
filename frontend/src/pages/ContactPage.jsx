@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { FiMail, FiMapPin, FiPhone } from 'react-icons/fi';
+import { FiGlobe, FiMail, FiMapPin, FiPhone } from 'react-icons/fi';
 
+import Seo from '../components/Seo';
 import SectionHeading from '../components/shared/SectionHeading';
 
 const initialState = { fullName: '', email: '', subject: '', message: '' };
@@ -17,16 +18,22 @@ function ContactPage() {
 
   return (
     <section className="container-shell py-10">
+      <Seo
+        title="Bog‘lanish | WebDasturlashEdu"
+        description="WebDasturlashEdu loyihasi bo‘yicha bog‘lanish: hamkorlik, buyurtma, deploy va frontend moslashtirish uchun aloqa sahifasi."
+      />
+
       <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="space-y-6">
           <div className="glass-panel rounded-[2rem] p-8 sm:p-10">
-            <SectionHeading eyebrow="Bog‘lanish" title="Savol, taklif yoki hamkorlik bo‘yicha bog‘laning" description="Platforma bo‘yicha fikr va takliflaringizni yuboring." />
+            <SectionHeading eyebrow="Bog‘lanish" title="Savol, taklif yoki deploy bo‘yicha bog‘laning" description="cloude.uz uchun frontend, custom domain deploy va ta’lim platformasi bo‘yicha takliflaringizni yuboring." />
           </div>
           <div className="glass-panel rounded-[2rem] p-8">
             <div className="space-y-4 text-sm text-[#334155]">
-              <p className="flex items-center gap-3"><FiMail className="text-[#2563eb]" /> support@webdasturlashedu.uz</p>
+              <p className="flex items-center gap-3"><FiMail className="text-[#2563eb]" /> hello@cloude.uz</p>
               <p className="flex items-center gap-3"><FiPhone className="text-[#2563eb]" /> +998 90 123 45 67</p>
               <p className="flex items-center gap-3"><FiMapPin className="text-[#2563eb]" /> Toshkent, O‘zbekiston</p>
+              <p className="flex items-center gap-3"><FiGlobe className="text-[#2563eb]" /> https://cloude.uz</p>
             </div>
           </div>
         </div>

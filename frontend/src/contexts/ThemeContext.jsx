@@ -5,7 +5,7 @@ import { themeStorage } from '../utils/storage';
 const ThemeContext = createContext(null);
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(() => themeStorage.getTheme());
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
@@ -17,7 +17,7 @@ export function ThemeProvider({ children }) {
     () => ({
       theme,
       setTheme,
-      toggleTheme: () => setTheme('light'),
+      toggleTheme: () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light')),
     }),
     [theme]
   );

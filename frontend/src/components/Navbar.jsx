@@ -1,24 +1,13 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
-import { FiGrid, FiLogOut, FiMenu, FiUser, FiX } from 'react-icons/fi';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { FiArrowRight, FiMenu, FiX } from 'react-icons/fi';
+import { Link, NavLink } from 'react-router-dom';
 
-import { useAuth } from '../contexts/AuthContext';
 import { NAV_LINKS } from '../utils/constants';
-import SearchBar from './SearchBar';
 import ThemeToggle from './ThemeToggle';
 
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchText, setSearchText] = useState('');
-  const navigate = useNavigate();
-  const { isAuthenticated, user, logout } = useAuth();
-
-  const handleSearch = (event) => {
-    event.preventDefault();
-    navigate(`/search?q=${encodeURIComponent(searchText)}`);
-    setMobileOpen(false);
-  };
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -30,7 +19,7 @@ function Navbar() {
             </div>
             <div>
               <p className="text-[15px] font-semibold tracking-[-0.015em] text-[var(--color-heading-2)]">WebDasturlashEdu</p>
-              <p className="text-soft text-xs">Web dasturlash platformasi</p>
+              <p className="text-soft text-xs">cloude.uz uchun zamonaviy frontend</p>
             </div>
           </Link>
 
@@ -53,25 +42,8 @@ function Navbar() {
           </nav>
 
           <div className="hidden items-center gap-3 xl:flex">
-            <div className="w-72">
-              <SearchBar value={searchText} onChange={(e) => setSearchText(e.target.value)} onSubmit={handleSearch} placeholder="Sayt bo‘ylab qidirish" />
-            </div>
             <ThemeToggle />
-            {isAuthenticated ? (
-              <div className="flex items-center gap-2">
-                <Link to="/dashboard" className="glass-button rounded-2xl px-4 py-3 text-sm font-semibold">
-                  <span className="inline-flex items-center gap-2"><FiGrid /> Boshqaruv paneli</span>
-                </Link>
-                <button type="button" onClick={logout} className="glass-button rounded-2xl p-3" title="Chiqish">
-                  <FiLogOut />
-                </button>
-              </div>
-            ) : (
-              <div className="flex items-center gap-2">
-                <Link to="/login" className="glass-button rounded-2xl px-4 py-3 text-sm font-semibold">Kirish</Link>
-                <Link to="/register" className="brand-primary rounded-2xl px-4 py-3 text-sm font-semibold">Ro‘yxatdan o‘tish</Link>
-              </div>
-            )}
+            <Link to="/contact" className="brand-primary inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold">Bog‘lanish <FiArrowRight /></Link>
           </div>
 
           <div className="flex items-center gap-2 xl:hidden">
@@ -92,8 +64,7 @@ function Navbar() {
             className="container-shell mt-3 xl:hidden"
           >
             <div className="glass-panel rounded-[2rem] p-4">
-              <SearchBar value={searchText} onChange={(e) => setSearchText(e.target.value)} onSubmit={handleSearch} placeholder="Kontent bo‘yicha qidirish" />
-              <div className="mt-4 grid gap-2">
+              <div className="grid gap-2">
                 {NAV_LINKS.map((item) => (
                   <NavLink key={item.to} to={item.to} onClick={() => setMobileOpen(false)} className="text-navbar rounded-2xl px-4 py-3 hover:bg-[#eef6ff] hover:text-[var(--color-link-hover)]">
                     {item.label}
@@ -101,19 +72,8 @@ function Navbar() {
                 ))}
               </div>
               <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                {isAuthenticated ? (
-                  <>
-                    <Link to="/dashboard" onClick={() => setMobileOpen(false)} className="glass-button rounded-2xl px-4 py-3 text-center text-sm font-semibold">
-                      <span className="inline-flex items-center gap-2"><FiUser /> {user?.full_name || user?.username}</span>
-                    </Link>
-                    <button type="button" onClick={logout} className="brand-primary rounded-2xl px-4 py-3 text-sm font-semibold">Chiqish</button>
-                  </>
-                ) : (
-                  <>
-                    <Link to="/login" onClick={() => setMobileOpen(false)} className="glass-button rounded-2xl px-4 py-3 text-center text-sm font-semibold">Kirish</Link>
-                    <Link to="/register" onClick={() => setMobileOpen(false)} className="brand-primary rounded-2xl px-4 py-3 text-center text-sm font-semibold">Ro‘yxatdan o‘tish</Link>
-                  </>
-                )}
+                <Link to="/courses" onClick={() => setMobileOpen(false)} className="glass-button rounded-2xl px-4 py-3 text-center text-sm font-semibold">Kurslarni ko‘rish</Link>
+                <Link to="/contact" onClick={() => setMobileOpen(false)} className="brand-primary rounded-2xl px-4 py-3 text-center text-sm font-semibold">Bog‘lanish</Link>
               </div>
             </div>
           </motion.div>

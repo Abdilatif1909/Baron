@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiSun } from 'react-icons/fi';
+import { FiMoon, FiSun } from 'react-icons/fi';
 
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -12,10 +12,10 @@ function ThemeToggle() {
       type="button"
       onClick={toggleTheme}
       className="glass-button inline-flex h-11 w-11 items-center justify-center rounded-2xl text-lg"
-      aria-label="Light theme"
-      title="Light theme"
+      aria-label={theme === 'light' ? 'Qorong‘i rejimni yoqish' : 'Yorug‘ rejimni yoqish'}
+      title={theme === 'light' ? 'Qorong‘i rejimni yoqish' : 'Yorug‘ rejimni yoqish'}
     >
-      <FiSun />
+      {theme === 'light' ? <FiMoon /> : <FiSun />}
     </motion.button>
   );
 }

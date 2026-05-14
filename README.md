@@ -1,124 +1,113 @@
 # WebDasturlashEdu
 
-WebDasturlashEdu — React frontend va Django REST Framework backend bilan qurilgan zamonaviy ta’lim platformasi.
+WebDasturlashEdu — `cloude.uz` domeniga deploy qilish uchun tayyorlangan zamonaviy **React + Vite** frontend loyihasi. Interfeys TailwindCSS va Framer Motion asosida qurilgan bo‘lib, professional landing page, kurslar sahifasi, glassmorphism bloklar, dark/light mode va GitHub Pages deploy tayyorgarligini o‘z ichiga oladi.
 
-## Backend arxitekturasi
+## Asosiy imkoniyatlar
 
-Backend professional DRF structure bilan yozilgan:
+- Zamonaviy professional UI
+- To‘liq responsive layout
+- TailwindCSS asosidagi dizayn tizimi
+- Dark / Light mode
+- Sticky navbar
+- Hero section
+- Features section
+- Courses section
+- Statistics cards
+- CTA bloklar
+- Footer
+- Framer Motion animatsiyalari
+- Glassmorphism elementlar
+- Gradient background
+- SEO title va meta description
+- GitHub Pages + custom domain (`cloude.uz`) uchun tayyor sozlama
 
-- [backend/apps](backend/apps) — domain app'lar
-- [backend/config](backend/config) — settings, urls, asgi, wsgi
-- [backend/api](backend/api) — API route composition
-- [backend/services](backend/services) — business logic va import services
-- [backend/utils](backend/utils) — permissions, pagination, validators, constants
+## Texnologiyalar
 
-## Backend stack
+- React
+- Vite
+- TailwindCSS
+- Framer Motion
+- React Router
+- React Icons
 
-- Django
-- Django REST Framework
-- SimpleJWT
-- SQLite
-- CORS Headers
-- Pillow
+## Sahifalar
 
-## User rollar
+- `/` — Bosh sahifa
+- `/courses` — Kurslar
+- `/about` — Platforma haqida
+- `/contact` — Bog‘lanish
 
-- `student`
-- `teacher`
-- `admin`
+## Deploy uchun tayyorlangan fayllar
 
-## Asosiy modellar
+- [frontend/vite.config.js](frontend/vite.config.js) — `base: '/'` bilan sozlangan
+- [frontend/public/CNAME](frontend/public/CNAME) — custom domain: `cloude.uz`
+- [frontend/public/404.html](frontend/public/404.html) — GitHub Pages uchun SPA redirect fallback
+- [frontend/index.html](frontend/index.html) — SEO title va meta description
 
-- `User` — `username`, `email`, `role`, `full_name`
-- `Lecture` — `title`, `file`, `uploaded_at`
-- `Practical` — `title`, `file`, `uploaded_at`
-- `Book` — `title`, `file`, `image`, `author`
-- `Test` — `title`, `created_by`
-- `Question` — `test`, `question`, `option_a`, `option_b`, `option_c`, `option_d`, `correct_answer`
-- `Result` — `student`, `test`, `score`, `created_at`
+## Lokal ishga tushirish
 
-## API endpointlar
+### 1. Frontend papkaga o‘ting
 
-### Auth
-- `POST /api/auth/register/`
-- `POST /api/auth/login/`
-- `POST /api/auth/refresh/`
-- `GET|PUT|PATCH /api/auth/profile/`
-- `GET|POST|PUT|PATCH|DELETE /api/auth/users/` — admin only
+- `cd frontend`
 
-### Content
-- `GET|POST /api/lectures/`
-- `GET|PUT|PATCH|DELETE /api/lectures/{id}/`
-- `GET /api/lectures/{id}/download/`
-- `GET|POST /api/practicals/`
-- `GET|PUT|PATCH|DELETE /api/practicals/{id}/`
-- `GET /api/practicals/{id}/download/`
-- `GET|POST /api/books/`
-- `GET|PUT|PATCH|DELETE /api/books/{id}/`
+### 2. Paketlarni o‘rnating
 
-### Test system
-- `GET|POST /api/tests/`
-- `GET|PUT|PATCH|DELETE /api/tests/{id}/`
-- `GET /api/tests/{id}/start/`
-- `POST /api/tests/{id}/submit/`
-- `GET /api/tests/teacher_results/`
-- `GET|POST|PUT|PATCH|DELETE /api/questions/`
-- `GET /api/results/`
+- `npm install`
 
-### Search
-- `GET /api/search/?q=...`
+### 3. Development serverni ishga tushiring
 
-## Permission qoidalari
+- `npm run dev`
 
-- Student: materiallarni o‘qiydi, testni boshlaydi, test topshiradi, o‘z natijalarini ko‘radi.
-- Teacher: lecture/practical/test/question boshqaradi, o‘z testlari bo‘yicha student natijalarini ko‘radi.
-- Admin: barcha modellarni va user'larni boshqaradi.
+### 4. Production build yarating
 
-## PDF auto import
+- `npm run build`
 
-Import manbalari:
+Build muvaffaqiyatli yakunlangach [frontend/dist](frontend/dist) papkasi hosil bo‘ladi.
 
-- [pdf/maruza](pdf/maruza)
-- [pdf/amaliy](pdf/amaliy)
+## GitHub Pages deploy
 
-Management command:
+### Variant 1: GitHub Pages settings orqali
 
-- `python manage.py import_pdfs`
+1. Repository ichida frontend build natijasini tayyorlang:
+   - `cd frontend`
+   - `npm install`
+   - `npm run build`
+2. `dist` papka tarkibini GitHub Pages publish source sifatida ishlating.
+3. Repository settings ichida **Pages** bo‘limidan publish source tanlang.
+4. Custom domain sifatida `cloude.uz` ni ulang.
 
-Command quyidagilarni bajaradi:
+### Variant 2: GitHub Actions orqali
 
-- PDF fayllarni scan qiladi
-- `Lecture` va `Practical` bazasiga yozadi
-- `source_path` va `file_hash` orqali duplicate tekshiradi
+Repository uchun GitHub Actions workflow qo‘shib, `frontend/dist` ni Pages ga publish qilish mumkin.
 
-## Admin panel
+## Dizayn ranglari
 
-- Custom branding
-- Gradient admin header
-- Search, filter va ordering
-- Test va result statistik ko‘rsatkichlari
+- Primary: `#2563eb`
+- Secondary: `#0f172a`
 
-## Backend setup
+## Loyiha tuzilmasi
 
-1. Virtual environment yarating.
-2. Dependency o‘rnating:
-   - `pip install -r backend/requirements.txt`
-3. Migration yarating va ishga tushiring:
-   - `python backend/manage.py makemigrations`
-   - `python backend/manage.py migrate`
-4. PDF import qiling:
-   - `python backend/manage.py import_pdfs`
-5. Superuser yarating:
-   - `python backend/manage.py createsuperuser`
-6. Serverni ishga tushiring:
-   - `python backend/manage.py runserver`
+```text
+frontend/
+  public/
+    CNAME
+    404.html
+  src/
+    components/
+    layouts/
+    pages/
+    utils/
+    App.jsx
+    main.jsx
+  index.html
+  vite.config.js
+```
 
-## Media va static
+## Eslatma
 
-- Media root: [backend/media](backend/media)
-- Static root: [backend/staticfiles](backend/staticfiles)
-- Static source: [backend/static](backend/static)
+Repository ichida backend bilan bog‘liq eski modullar mavjud bo‘lishi mumkin, ammo GitHub Pages deploy uchun asosiy qism **frontend** hisoblanadi.
 
-## Frontend
+## Muallif
 
-Frontend qismi [frontend](frontend) ichida joylashgan.
+- GitHub: [Abdilatif1909](https://github.com/Abdilatif1909)
+- Repository: [cloude.uz](https://github.com/Abdilatif1909/cloude.uz)

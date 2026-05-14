@@ -34,8 +34,8 @@ export const sessionStorageUtil = {
 };
 
 export const themeStorage = {
-  getTheme: () => 'light',
-  setTheme: () => localStorage.setItem(THEME_KEY, 'light'),
+  getTheme: () => localStorage.getItem(THEME_KEY) || 'light',
+  setTheme: (theme) => localStorage.setItem(THEME_KEY, theme),
 };
 
 export const downloadStorage = {
