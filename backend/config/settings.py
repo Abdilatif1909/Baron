@@ -10,7 +10,24 @@ GITHUB_RAW_BASE_URL = config(
     "GITHUB_RAW_BASE_URL",
     default="https://raw.githubusercontent.com/Abdilatif1909/cloude.uz/main",
 )
+DEFAULT_ALLOWED_HOSTS = [
+    "abdilatif.pythonanywhere.com",
+    "127.0.0.1",
+    "localhost",
+    "cloude.uz",
+    "www.cloude.uz",
+    "cloude-uz.vercel.app",
+    "baron-api-oaxm.onrender.com",
+]
+ALLOWED_HOSTS = config(
+    "ALLOWED_HOSTS",
+    default=",".join(DEFAULT_ALLOWED_HOSTS),
+    cast=Csv(),
+)
 
+for host in DEFAULT_ALLOWED_HOSTS:
+    if host not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(host)
 SECRET_KEY = config("SECRET_KEY", default="django-insecure-webdasturlashedu-backend")
 DEBUG = config("DEBUG", default=False, cast=bool)
 
