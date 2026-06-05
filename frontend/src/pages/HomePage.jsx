@@ -25,7 +25,7 @@ const quickSections = [
   { title: 'Qidiruv', description: 'Ma’ruza, amaliy va kitoblar bo‘ylab izlash.', to: '/search', icon: FiTrendingUp },
 ];
 
-const AUTHOR_IMAGE_URL = `${import.meta.env.VITE_API_URL}/media/img/muqaddas.png`;
+const AUTHOR_IMAGE_URL = 'https://baron-api-oaxm.onrender.com/media/img/muqaddas.png';
 
 function HomePage() {
   const { isAuthenticated } = useAuth();
