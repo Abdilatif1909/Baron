@@ -3,11 +3,14 @@ import { useState } from 'react';
 import { FiArrowRight, FiMenu, FiX } from 'react-icons/fi';
 import { Link, NavLink } from 'react-router-dom';
 
+import { useAuth } from '../contexts/AuthContext';
 import { NAV_LINKS } from '../utils/constants';
 import ThemeToggle from './ThemeToggle';
 
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { isAuthenticated, logout, user } = useAuth();
+  const navLinks = isAuthenticated ? NAV_LINKS.filter((item) => item.to !== '/register') : NAV_LINKS;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -19,12 +22,12 @@ function Navbar() {
             </div>
             <div>
               <p className="text-[15px] font-semibold tracking-[-0.015em] text-[var(--color-heading-2)]">WebDasturlashEdu</p>
-              <p className="text-soft text-xs">cloude.uz uchun zamonaviy frontend</p>
+              <p className="text-soft text-xs">Ma’ruza, amaliy, test va auth modullari bilan</p>
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-1 xl:flex">
-            {NAV_LINKS.map((item) => (
+          <nav className="hidden items-center gap-1 2xl:flex">
+            {navLinks.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
@@ -41,12 +44,19 @@ function Navbar() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 xl:flex">
+          <div className="hidden items-center gap-3 2xl:flex">
             <ThemeToggle />
-            <Link to="/contact" className="brand-primary inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold">Bog‘lanish <FiArrowRight /></Link>
+            {isAuthenticated ? (
+              <>
+                <Link to="/dashboard" className="glass-button inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold">{user?.role || 'dashboard'} paneli</Link>
+                <button type="button" onClick={logout} className="brand-primary inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold">Chiqish <FiArrowRight /></button>
+              </>
+            ) : (
+              <Link to="/login" className="brand-primary inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold">Kirish <FiArrowRight /></Link>
+            )}
           </div>
 
-          <div className="flex items-center gap-2 xl:hidden">
+          <div className="flex items-center gap-2 2xl:hidden">
             <ThemeToggle />
             <button type="button" onClick={() => setMobileOpen((prev) => !prev)} className="glass-button rounded-2xl p-3">
               {mobileOpen ? <FiX /> : <FiMenu />}
@@ -61,19 +71,28 @@ function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="container-shell mt-3 xl:hidden"
+            className="container-shell mt-3 2xl:hidden"
           >
             <div className="glass-panel rounded-[2rem] p-4">
-              <div className="grid gap-2">
-                {NAV_LINKS.map((item) => (
+              <div className="grid gap-2 sm:grid-cols-2">
+                {navLinks.map((item) => (
                   <NavLink key={item.to} to={item.to} onClick={() => setMobileOpen(false)} className="text-navbar rounded-2xl px-4 py-3 hover:bg-[#eef6ff] hover:text-[var(--color-link-hover)]">
                     {item.label}
                   </NavLink>
                 ))}
               </div>
               <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                <Link to="/courses" onClick={() => setMobileOpen(false)} className="glass-button rounded-2xl px-4 py-3 text-center text-sm font-semibold">Kurslarni ko‘rish</Link>
-                <Link to="/contact" onClick={() => setMobileOpen(false)} className="brand-primary rounded-2xl px-4 py-3 text-center text-sm font-semibold">Bog‘lanish</Link>
+                {isAuthenticated ? (
+                  <>
+                    <Link to="/dashboard" onClick={() => setMobileOpen(false)} className="glass-button rounded-2xl px-4 py-3 text-center text-sm font-semibold">Dashboard</Link>
+                    <button type="button" onClick={() => { logout(); setMobileOpen(false); }} className="brand-primary rounded-2xl px-4 py-3 text-center text-sm font-semibold">Chiqish</button>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/login" onClick={() => setMobileOpen(false)} className="glass-button rounded-2xl px-4 py-3 text-center text-sm font-semibold">Kirish</Link>
+                    <Link to="/register" onClick={() => setMobileOpen(false)} className="brand-primary rounded-2xl px-4 py-3 text-center text-sm font-semibold">Ro‘yxatdan o‘tish</Link>
+                  </>
+                )}
               </div>
             </div>
           </motion.div>

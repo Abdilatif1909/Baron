@@ -1,8 +1,13 @@
 export const NAV_LINKS = [
   { to: '/', label: 'Bosh sahifa' },
+  { to: '/lectures', label: 'Ma’ruzalar' },
+  { to: '/practicals', label: 'Amaliylar' },
+  { to: '/tests', label: 'Testlar' },
+  { to: '/register', label: 'Ro‘yxatdan o‘tish' },
   { to: '/courses', label: 'Kurslar' },
-  { to: '/about', label: 'Platforma haqida' },
-  { to: '/contact', label: 'Bog‘lanish' },
+  { to: '/books', label: 'Kitoblar' },
+  { to: '/videos', label: 'Videolar' },
+  { to: '/search', label: 'Qidiruv' },
 ];
 
 export const ROLE_LABELS = {

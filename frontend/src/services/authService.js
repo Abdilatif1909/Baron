@@ -21,6 +21,10 @@ export const authService = {
     const { data } = await http.get('/auth/users/', { params });
     return data;
   },
+  getStudents: async (params = {}) => {
+    const { data } = await http.get('/auth/students/', { params });
+    return data;
+  },
   createUser: async (payload) => {
     const { data } = await http.post('/auth/users/', payload);
     return data;

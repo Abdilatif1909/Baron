@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../contexts/AuthContext';
 
@@ -15,8 +15,12 @@ const initialState = {
 function RegisterPage() {
   const [form, setForm] = useState(initialState);
   const [error, setError] = useState('');
-  const { register } = useAuth();
+  const { isAuthenticated, register } = useAuth();
   const navigate = useNavigate();
+
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" replace />;
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();

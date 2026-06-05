@@ -25,7 +25,14 @@ function BooksPage() {
 
   return (
     <section className="container-shell py-10">
-      <SectionHeading eyebrow="Kitoblar" title="Kitob PDF kutubxonasi" description="Kitoblar ma’ruzalar sahifasidagi kabi ko‘rish va yuklab olish funksiyasi bilan chiqariladi." />
+      <div className="brand-dark-panel rounded-[2rem] p-8 sm:p-10">
+        <SectionHeading eyebrow="Kitoblar" title="Kitob PDF kutubxonasi" description="Kitoblar ham oldingidek premium kartalarda, Online ko‘rish va Yuklab olish tugmalari bilan chiqariladi." />
+        <div className="mt-6 flex flex-wrap gap-3 text-sm text-white/80">
+          <span className="rounded-full bg-white/10 px-4 py-2">{books.length} ta kitob</span>
+          <span className="rounded-full bg-white/10 px-4 py-2">Qulay online preview</span>
+          <span className="rounded-full bg-white/10 px-4 py-2">Bir bosishda download</span>
+        </div>
+      </div>
       <div className="mt-8 max-w-xl">
         <SearchBar value={query} onChange={(e) => setQuery(e.target.value)} onSubmit={(e) => e.preventDefault()} placeholder="Kitob qidirish" />
       </div>

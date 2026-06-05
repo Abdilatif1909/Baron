@@ -42,12 +42,14 @@ export const downloadStorage = {
   getDownloads: () => parse(localStorage.getItem(DOWNLOADED_FILES_KEY), []),
   trackDownload: (item) => {
     const items = downloadStorage.getDownloads();
+    const previous = items.find((entry) => entry.id === `${item.type}-${item.id ?? item.title}`);
     const record = {
       id: `${item.type}-${item.id ?? item.title}`,
       type: item.type,
       title: item.title,
       fileUrl: item.file_url || item.fileUrl || item.download_url,
       downloadedAt: new Date().toISOString(),
+      count: (previous?.count || 0) + 1,
     };
     const next = [record, ...items.filter((entry) => entry.id !== record.id)].slice(0, 20);
     localStorage.setItem(DOWNLOADED_FILES_KEY, JSON.stringify(next));

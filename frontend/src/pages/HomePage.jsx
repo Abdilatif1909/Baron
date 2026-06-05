@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
-import { FiArrowRight, FiAward, FiBookOpen, FiCode, FiLayers, FiTrendingUp } from 'react-icons/fi';
+import { FiArrowRight, FiAward, FiBookOpen, FiCode, FiEdit3, FiFileText, FiInstagram, FiLayers, FiLogIn, FiPhone, FiTrendingUp } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 import Seo from '../components/Seo';
 import SectionHeading from '../components/shared/SectionHeading';
 import StatsCard from '../components/StatsCard';
+import { useAuth } from '../contexts/AuthContext';
 import { COURSE_ITEMS, FEATURE_ITEMS, STAT_ITEMS } from '../utils/constants';
 
 const heroMetrics = [
@@ -14,7 +15,23 @@ const heroMetrics = [
   { label: 'Tajriba', value: 'Moslashuvchan', description: 'Mobil, planshet va desktop uchun optimallashtirilgan', icon: FiAward },
 ];
 
+const quickSections = [
+  { title: 'Ma’ruzalar', description: 'PDF ma’ruza kutubxonasini ko‘rish va yuklab olish.', to: '/lectures', icon: FiBookOpen },
+  { title: 'Amaliylar', description: 'Amaliy mashg‘ulotlar bo‘limi va materiallari.', to: '/practicals', icon: FiCode },
+  { title: 'Testlar', description: 'Interaktiv testlar, session va natijalar.', to: '/tests', icon: FiFileText },
+  { title: 'Ro‘yxatdan o‘tish', description: 'Talaba yoki o‘qituvchi akkaunti yaratish.', to: '/register', icon: FiEdit3 },
+  { title: 'Kirish', description: 'Avval yozilgan dashboard va auth oqimiga kirish.', to: '/login', icon: FiLogIn },
+  { title: 'Videolar', description: 'Fan bo‘yicha YouTube playlistni zamonaviy sahifada ko‘rish.', to: '/videos', icon: FiTrendingUp },
+  { title: 'Qidiruv', description: 'Ma’ruza, amaliy va kitoblar bo‘ylab izlash.', to: '/search', icon: FiTrendingUp },
+];
+
+const AUTHOR_IMAGE_URL = `${import.meta.env.VITE_API_URL}/media/img/muqaddas.png`;
+
 function HomePage() {
+  const { isAuthenticated } = useAuth();
+  const visibleQuickSections = isAuthenticated
+    ? quickSections.filter((item) => item.to !== '/register')
+    : quickSections;
 
   return (
     <div className="space-y-12">
@@ -30,7 +47,7 @@ function HomePage() {
               GitHub Pages uchun production frontend
             </span>
             <h1 className="text-hero mt-6">
-              WebDasturlashEdu bilan <span className="gradient-text">web dasturlashni</span> zamonaviy interfeysda taqdim eting.
+              WebDasturlashEdu bilan <span className="gradient-text">web dasturlashni</span> zamonaviy interfeysda o'rganing.
             </h1>
             <p className="text-body-lg mt-6 max-w-2xl">
               Professional landing page, responsive kurs bloklari, animatsiyalangan sectionlar, dark/light mode va premium glassmorphism komponentlari bilan tayyor loyiha.
@@ -56,6 +73,27 @@ function HomePage() {
           {heroMetrics.map((item) => (
             <StatsCard key={item.label} {...item} />
           ))}
+        </div>
+      </section>
+
+      <section className="container-shell py-4">
+        <div className="glass-panel rounded-[2rem] p-8 sm:p-10">
+          <SectionHeading
+            eyebrow="Avvalgi modullar"
+            title="Localhost uchun barcha asosiy bo‘limlar qayta chiqarildi"
+            description="Ma’ruza, amaliy, testlar, kirish va qidiruv sahifalari endi bosh sahifadan ham ochiladi."
+            align="center"
+          />
+          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {visibleQuickSections.map(({ title, description, to, icon: Icon }) => (
+              <Link key={to} to={to} className="soft-card rounded-[1.75rem] p-6 transition-transform duration-300 hover:-translate-y-1">
+                <div className="icon-chip"><Icon /></div>
+                <h3 className="text-card-title mt-5">{title}</h3>
+                <p className="text-body mt-3">{description}</p>
+                <span className="text-link mt-4 inline-flex items-center gap-2">Ochish <FiArrowRight /></span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -129,15 +167,59 @@ function HomePage() {
 
       <section className="container-shell py-10">
         <div className="brand-dark-panel rounded-[2rem] p-8 sm:p-10">
-          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div>
-              <p className="text-eyebrow !text-white/75">Deploy tayyor</p>
-              <h2 className="mt-4 text-3xl font-black tracking-[-0.03em] sm:text-4xl">GitHub Pages orqali cloude.uz domeniga ulash uchun tayyor frontend.</h2>
-              <p className="mt-4 max-w-2xl text-white/80">Vite build sozlamalari, SEO meta, CNAME va static-hostingga mos SPA redirect fayllari loyihaga qo‘shilgan.</p>
+          <div className="grid gap-8 lg:grid-cols-[220px_1fr] lg:items-center">
+            <div className="mx-auto w-full max-w-[220px] overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 p-3 shadow-[0_20px_60px_rgba(15,23,42,0.22)] backdrop-blur-md">
+              <img
+                src={AUTHOR_IMAGE_URL}
+                alt="O‘ngboyeva Muqaddas Yo‘ldoshevna"
+                className="h-[260px] w-full rounded-[1.5rem] object-cover"
+              />
             </div>
-            <Link to="/contact" className="rounded-2xl bg-white px-6 py-4 text-center font-semibold text-[#0f172a]">
-              Hozir bog‘lanish
-            </Link>
+
+            <div>
+              <p className="text-eyebrow !text-white/75">Muallif haqida</p>
+              <h2 className="mt-4 text-3xl font-black tracking-[-0.03em] sm:text-4xl">
+                O‘ngboyeva Muqaddas Yo‘ldoshevna
+              </h2>
+              <p className="mt-4 max-w-3xl text-lg text-white/85">
+                Axborot texnologiyalari va menejment universiteti magistranti
+              </p>
+
+              <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                <a
+                  href="tel:+998935773573"
+                  className="rounded-3xl border border-white/10 bg-white/10 p-5 transition hover:bg-white/15"
+                >
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-white/70">
+                    <FiPhone /> Telefon
+                  </span>
+                  <p className="mt-3 text-lg font-bold text-white">+998 93 577 35 73</p>
+                </a>
+
+                <a
+                  href="https://instagram.com/buronraxmonov"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-3xl border border-white/10 bg-white/10 p-5 transition hover:bg-white/15"
+                >
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-white/70">
+                    <FiInstagram /> Instagram
+                  </span>
+                  <p className="mt-3 text-lg font-bold text-white">@buronraxmonov</p>
+                </a>
+
+                <div className="rounded-3xl border border-white/10 bg-white/10 p-5 transition hover:bg-white/15 sm:col-span-2 xl:col-span-1">
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-white/70">
+                    <FiAward /> Status
+                  </span>
+                  <p className="mt-3 text-lg font-bold text-white">Magistrant</p>
+                </div>
+              </div>
+
+              <p className="mt-6 max-w-2xl text-white/75">
+                Zamonaviy web-ta’lim, amaliy yondashuv va raqamli o‘quv tajribasini uyg‘unlashtirgan muallif profili.
+              </p>
+            </div>
           </div>
         </div>
       </section>

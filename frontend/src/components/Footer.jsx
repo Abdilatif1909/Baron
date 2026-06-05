@@ -1,7 +1,11 @@
 import { FiArrowUpRight, FiBookOpen, FiGithub, FiInstagram, FiMail } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
+import { useAuth } from '../contexts/AuthContext';
+
 function Footer() {
+  const { isAuthenticated } = useAuth();
+
   return (
     <footer className="border-t border-[var(--color-border)] py-12">
       <div className="container-shell grid gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
@@ -19,17 +23,21 @@ function Footer() {
         </div>
         <div>
           <p className="text-eyebrow">Tezkor havolalar</p>
-          <div className="mt-4 space-y-3">
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <Link to="/" className="text-link text-sm">Bosh sahifa</Link>
-            <Link to="/courses" className="text-link text-sm">Kurslar</Link>
-            <Link to="/about" className="text-link text-sm">Platforma haqida</Link>
-            <Link to="/contact" className="text-link text-sm">Bog‘lanish</Link>
+            <Link to="/lectures" className="text-link text-sm">Ma’ruzalar</Link>
+            <Link to="/practicals" className="text-link text-sm">Amaliylar</Link>
+            <Link to="/tests" className="text-link text-sm">Testlar</Link>
+            {!isAuthenticated ? <Link to="/register" className="text-link text-sm">Ro‘yxatdan o‘tish</Link> : null}
+            <Link to="/books" className="text-link text-sm">Kitoblar</Link>
+            <Link to="/videos" className="text-link text-sm">Videolar</Link>
+            <Link to="/search" className="text-link text-sm">Qidiruv</Link>
           </div>
         </div>
         <div>
           <p className="text-eyebrow">Bog‘lanish</p>
           <div className="mt-4 space-y-3 text-sm text-[var(--color-body)]">
-            <p className="inline-flex items-center gap-3"><FiMail /> hello@cloude.uz</p>
+            <p className="inline-flex items-center gap-3"><FiMail /> abdulatif1909@gmail.com</p>
             <p className="inline-flex items-center gap-3"><FiGithub /> github.com/Abdilatif1909/cloude.uz</p>
             <p className="inline-flex items-center gap-3"><FiInstagram /> @cloude.uz</p>
           </div>

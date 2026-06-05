@@ -4,6 +4,9 @@ import { FiDownload, FiX } from 'react-icons/fi';
 function PdfViewerModal({ item, open, onClose, onDownload }) {
   const pdfUrl = item?.pdf_url || item?.file_url || item?.download_url;
   const downloadUrl = item?.download_url || pdfUrl;
+  const previewUrl = pdfUrl
+    ? `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(pdfUrl)}`
+    : null;
 
   return (
     <AnimatePresence>
@@ -22,7 +25,7 @@ function PdfViewerModal({ item, open, onClose, onDownload }) {
           >
             <div className="flex items-center justify-between gap-4 border-b border-white/10 px-5 py-4">
               <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-[#9ec0ff]">PDF ko‘ruvchi</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-[#9ec0ff]">Online ko‘rish</p>
                 <h3 className="mt-2 text-lg font-semibold">{item.title}</h3>
               </div>
               <div className="flex items-center gap-2">
@@ -42,8 +45,13 @@ function PdfViewerModal({ item, open, onClose, onDownload }) {
                 </button>
               </div>
             </div>
-            {pdfUrl ? (
-              <iframe src={pdfUrl} title={item.title} className="h-full w-full bg-white" />
+            {previewUrl ? (
+              <iframe
+                key={previewUrl}
+                src={previewUrl}
+                title={item.title}
+                className="h-full w-full bg-white"
+              />
             ) : (
               <div className="flex h-full items-center justify-center bg-white text-slate-500">
                 PDF URL topilmadi.

@@ -25,7 +25,14 @@ function LecturesPage() {
 
   return (
     <section className="container-shell py-10">
-      <SectionHeading eyebrow="Ma’ruzalar" title="Ma’ruza PDF kutubxonasi" description="Har bir ma’ruza kartasi ko‘rish va yuklab olish funksiyasi bilan taqdim etiladi." />
+      <div className="brand-dark-panel rounded-[2rem] p-8 sm:p-10">
+        <SectionHeading eyebrow="Ma’ruzalar" title="Ma’ruza PDF kutubxonasi" description="Har bir ma’ruza kartasi chiroyli preview, Online ko‘rish va Yuklab olish tugmalari bilan taqdim etiladi." />
+        <div className="mt-6 flex flex-wrap gap-3 text-sm text-white/80">
+          <span className="rounded-full bg-white/10 px-4 py-2">{lectures.length} ta ma’ruza</span>
+          <span className="rounded-full bg-white/10 px-4 py-2">Premium ko‘rinish</span>
+          <span className="rounded-full bg-white/10 px-4 py-2">GitHub raw delivery</span>
+        </div>
+      </div>
       <div className="mt-8 max-w-xl">
         <SearchBar value={query} onChange={(e) => setQuery(e.target.value)} onSubmit={(e) => e.preventDefault()} placeholder="Ma’ruza qidirish" />
       </div>
