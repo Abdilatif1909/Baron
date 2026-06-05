@@ -28,8 +28,14 @@ function RegisterPage() {
     try {
       await register(form);
       navigate('/dashboard');
-    } catch {
-      setError('Ro‘yxatdan o‘tishda xatolik yuz berdi.');
+    }
+    catch (error) {
+      console.error(error);
+      console.error(error?.response?.data);
+
+      setError(
+        JSON.stringify(error?.response?.data || error.message)
+      );
     }
   };
 
