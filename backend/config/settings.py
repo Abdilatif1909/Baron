@@ -14,13 +14,13 @@ GITHUB_RAW_BASE_URL = config(
 SECRET_KEY = config("SECRET_KEY", default="django-insecure-webdasturlashedu-backend")
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-DEFAULT_ALLOWED_HOSTS = [
-    "abdilatif.pythonanywhere.com",
-    "127.0.0.1",
-    "localhost",
-    "cloude.uz",
-    "www.cloude.uz",
-    "cloude-uz.vercel.app",
+DEFAULT_CORS_ALLOWED_ORIGINS = [
+    "https://cloude.uz",
+    "https://www.cloude.uz",
+    "https://cloude-uz.vercel.app",
+    "https://baron-frontend.onrender.com",
+    "http://127.0.0.1:5173",
+    "http://localhost:5173",
 ]
 ALLOWED_HOSTS = config(
     "ALLOWED_HOSTS",
@@ -168,6 +168,7 @@ DEFAULT_CSRF_TRUSTED_ORIGINS = [
     "https://cloude.uz",
     "https://www.cloude.uz",
     "https://cloude-uz.vercel.app",
+    "https://baron-frontend.onrender.com",
 ]
 CSRF_TRUSTED_ORIGINS = config(
     "CSRF_TRUSTED_ORIGINS",
