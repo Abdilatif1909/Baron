@@ -7,6 +7,7 @@ import SectionHeading from '../components/shared/SectionHeading';
 import StatsCard from '../components/StatsCard';
 import { useAuth } from '../contexts/AuthContext';
 import { COURSE_ITEMS, FEATURE_ITEMS, STAT_ITEMS } from '../utils/constants';
+import muqaddasImg from '../assets/muqaddas.png';
 
 const heroMetrics = [
   { label: 'Frontend stack', value: 'React + Vite', description: 'Tezkor, zamonaviy va production-ready arxitektura', icon: FiCode },
@@ -25,7 +26,7 @@ const quickSections = [
   { title: 'Qidiruv', description: 'Ma’ruza, amaliy va kitoblar bo‘ylab izlash.', to: '/search', icon: FiTrendingUp },
 ];
 
-const AUTHOR_IMAGE_URL = 'https://baron-api-oaxm.onrender.com/media/img/muqaddas.png';
+const AUTHOR_IMAGE_URL = muqaddasImg;
 
 function HomePage() {
   const { isAuthenticated } = useAuth();
