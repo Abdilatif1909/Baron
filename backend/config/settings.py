@@ -31,22 +31,6 @@ for host in DEFAULT_ALLOWED_HOSTS:
 SECRET_KEY = config("SECRET_KEY", default="django-insecure-webdasturlashedu-backend")
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-DEFAULT_CORS_ALLOWED_ORIGINS = [
-    "https://cloude.uz",
-    "https://www.cloude.uz",
-    "https://cloude-uz.vercel.app",
-    "https://baron-frontend.onrender.com",
-    "http://127.0.0.1:5173",
-    "http://localhost:5173",
-]
-ALLOWED_HOSTS = config(
-    "ALLOWED_HOSTS",
-    default=",".join(DEFAULT_ALLOWED_HOSTS),
-    cast=Csv(),
-)
-for host in DEFAULT_ALLOWED_HOSTS:
-    if host not in ALLOWED_HOSTS:
-        ALLOWED_HOSTS.append(host)
 
 RENDER_EXTERNAL_HOSTNAME = config("RENDER_EXTERNAL_HOSTNAME", default="")
 if RENDER_EXTERNAL_HOSTNAME and RENDER_EXTERNAL_HOSTNAME not in ALLOWED_HOSTS:
@@ -161,25 +145,28 @@ SIMPLE_JWT = {
     "UPDATE_LAST_LOGIN": True,
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
-
 CORS_ALLOW_ALL_ORIGINS = False
+
 DEFAULT_CORS_ALLOWED_ORIGINS = [
     "https://cloude.uz",
     "https://www.cloude.uz",
     "https://cloude-uz.vercel.app",
+    "https://baron-frontend.onrender.com",
     "http://127.0.0.1:5173",
     "http://localhost:5173",
 ]
+
 CORS_ALLOWED_ORIGINS = config(
     "CORS_ALLOWED_ORIGINS",
     default=",".join(DEFAULT_CORS_ALLOWED_ORIGINS),
     cast=Csv(),
 )
+
 for origin in DEFAULT_CORS_ALLOWED_ORIGINS:
     if origin not in CORS_ALLOWED_ORIGINS:
         CORS_ALLOWED_ORIGINS.append(origin)
-CORS_ALLOW_CREDENTIALS = True
 
+CORS_ALLOW_CREDENTIALS = True
 DEFAULT_CSRF_TRUSTED_ORIGINS = [
     "https://abdilatif.pythonanywhere.com",
     "https://cloude.uz",
